@@ -4,11 +4,22 @@
   "description": "Messing around with different frameworks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r dotenv/config src/index.js",
+    "start": "nodemon -r dotenv/config --exec 'babel-node --inspect=0.0.0.0 src/index.js'",
+    "build": "babel src -d dist --source-maps"
   },
   "author": "Lorenzo Fabro",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.1"
   }
 }

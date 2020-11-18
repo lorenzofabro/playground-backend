@@ -10,11 +10,22 @@
       "typescript": "3.3.3333"
    },
    "dependencies": {
+      "@decorators/express": "^2.4.0",
+      "@types/compression": "^1.7.0",
+      "@types/cors": "^2.8.8",
+      "@types/http-errors": "^1.8.0",
+      "@types/morgan": "^1.9.2",
+      "body-parser": "^1.19.0",
+      "compression": "^1.7.4",
+      "cors": "^2.8.5",
       "dotenv": "^8.2.0",
       "express": "^4.17.1",
+      "http-errors": "^1.7.2",
+      "morgan": "^1.10.0",
       "mysql": "^2.14.1",
       "reflect-metadata": "^0.1.10",
-      "typeorm": "0.2.29"
+      "typeorm": "0.2.29",
+      "uninstall": "^0.0.0"
    },
    "scripts": {
       "start_default": "ts-node src/index.ts",

@@ -1,0 +1,20 @@
+{
+   "type": "mysql",
+   "host": "mysql",
+   "port": "",
+   "username": "",
+   "password": "",
+   "database": "",
+   "synchronize": true,
+   "logging": false,
+   "entities": [
+      "src/3-data/entities/**/*.ts"
+   ],
+   "migrations": [
+      "src/3-data/migrations/**/*.ts"
+   ],
+   "cli": {
+      "entitiesDir": "src/3-data/entities",
+      "migrationsDir": "src/3-data/migrations"
+   }
+}

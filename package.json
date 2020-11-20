@@ -8,7 +8,7 @@
       "nodemon": "^2.0.6",
       "rimraf": "^3.0.2",
       "ts-node": "3.3.0",
-      "typescript": "3.3.3333"
+      "typescript": "^3.3.3"
    },
    "dependencies": {
       "@decorators/express": "^2.4.0",
@@ -32,6 +32,6 @@
       "start_default": "ts-node src/index.ts",
       "start": "nodemon -r --inspect=0.0.0.0 ts-node src/index.ts",
       "build": "rimraf ./build && tsc",
-      "start_production": "npm run build && node build/index.js"
+      "start_production": "tsc && node build/index.js"
    }
 }

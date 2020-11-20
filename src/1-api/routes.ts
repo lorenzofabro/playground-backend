@@ -19,10 +19,9 @@ class Routes {
     apiRouter.use(bodyParser.json())
     apiRouter.use(compression())
     apiRouter.use(morgan('dev'))
-    apiRouter.get('/docker', (req, res) => res.send('Docker running.'))
 
     attachControllers(apiRouter, [UserController])
-
+    
     apiRouter.use((req, res, next) => {
       next(createError(404, 'Ruta no encontrada.'))
     })

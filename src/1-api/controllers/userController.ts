@@ -1,47 +1,78 @@
-import { getRepository } from "typeorm";
 import { Controller, Post, Get, Delete, Put } from '@decorators/express';
-import { User } from "../../3-data/entities/User";
 import { Request, Response } from "express";
+import { UserService } from '../../2-services';
+import { UserModel } from '../models/user';
 
 @Controller('/user')
 class UserController {
-    repository: any;
+    private service: UserService;
+
     constructor() {
-        this.repository = getRepository(User);
+        this.service = new UserService();
     }
 
     @Post('/')
     async create(req: Request, res: Response) {
-        const user = await this.repository.create(req.body);
-        const results = await this.repository.save(user);
-        return res.send(results);
+        const user = new UserModel(req.body);
+        const responseValidation = await this.service.validateMandatoryFields(user);
+        if (responseValidation) {
+            this.service.create(user).then(response => {
+                // res.status(response.statusCode).send(response)
+                res.send(response);
+            })
+        } else {
+            res.send("A problem occurred while performing this action ✖")
+        }
     }
 
     @Delete('/:id')
     async delete(req: Request, res: Response) {
-        const results = await this.repository.delete(req.params.id);
-        return res.send(results);
+        const id = req.params.id;
+        this.service.delete(id).then(response => {
+            res.send(response);
+        }).catch((error) => {
+            res.send("A problem occurred while performing this action ✖")
+        })
     }
 
     @Get('/')
     async getAll(req: Request, res: Response) {
-        const users = await this.repository.find();
-        res.json(users);
+        const pagination = {
+            startIn: 0,
+            pageSize: 100
+        }
+        this.service.getAll(pagination).then(response => {
+            res.send(response);
+        }).catch((error) => {
+            res.send("A problem occurred while performing this action ✖")
+        })
     }
 
     @Get('/:id')
     async getById(req: Request, res: Response) {
-        const results = await this.repository.findOne(req.params.id);
-        return res.send(results);
+        const id = req.params.id;
+        this.service.getById(id).then(response => {
+            res.send(response);
+        }).catch((error) => {
+            res.send("A problem occurred while performing this action ✖")
+        })
     }
 
     @Put('/:id')
     async update(req: Request, res: Response) {
-        const user = await this.repository.findOne(req.params.id);
-        this.repository.merge(user, req.body);
-        const results = await this.repository.save(user);
-        return res.send(results);
+        const user = new UserModel(req.body);
+        const id = req.params.id;
+        user.id = id;
+        const responseValidation = await this.service.validateMandatoryFields(user);
+        if (responseValidation) {
+            this.service.update(id, user).then(response => {
+                // res.status(response.statusCode).send(response)
+                res.send(response);
+            })
+        } else {
+            res.send("A problem occurred while performing this action ✖")
+        }
     }
 }
 
-export {UserController}
+export { UserController }

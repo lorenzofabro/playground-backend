@@ -22,7 +22,7 @@ class Server {
         this.express.get('/', (req, res) => res.send('<h3>Playground 🎲 - Iteration #1</h3>'));
 
         this.express.listen(process.env.PORT, () => {
-            console.log(`\x1b[35mServer on port: ${process.env.PORT}\x1b[0m`)
+            console.log(`\x1b[35mServer 🏃 on port ${process.env.PORT}\x1b[0m`)
         })
     }
 }

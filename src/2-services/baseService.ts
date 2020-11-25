@@ -5,7 +5,7 @@ class BaseService {
         this.entityRepository = EntityRepository
     }
 
-    async getAll(pagination) {
+    async getAll(pagination?) {
         const entities = await this.entityRepository.getAll(pagination)
         return entities
     }

@@ -29,7 +29,7 @@ class BaseRepository {
 
   async update(id, entityToUpdate) {
     try {
-      let query =  this.manager.createQueryBuilder()
+      let query = this.manager.createQueryBuilder()
         .update(this.entity)
         .set(entityToUpdate)
         .where('id = :id', { id: String(id) })
@@ -71,7 +71,7 @@ class BaseRepository {
           isEnabled: status,
           lastUpdateByUserId: userId
         })
-        .where('id = :id', { id: id })   
+        .where('id = :id', { id: id })
       let result = await query.execute()
       // let response = new ResultModel(202, 'Registro '+ (status ? 'activada' : 'desactivada') +' con Exito.', result)
       // return response
@@ -83,15 +83,17 @@ class BaseRepository {
     }
   }
 
-  async getAll(pagination) {
+  async getAll(pagination?) {
     try {
       let query = this.manager.getRepository(this.entity)
         .createQueryBuilder()
-      //Paginacion//
-      query.skip(pagination.startIn)
-      query.take(pagination.pageSize)
-      //Paginacion//
-      let entities= await query.getManyAndCount()
+
+      if (pagination) {
+        query.skip(pagination.startIn)
+        query.take(pagination.pageSize)
+      }
+
+      let entities = await query.getManyAndCount()
       const result = {
         data: entities[0],
         meta: {

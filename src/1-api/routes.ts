@@ -23,7 +23,7 @@ class Routes {
     attachControllers(apiRouter, [UserController])
     
     apiRouter.use((req, res, next) => {
-      next(createError(404, 'Ruta no encontrada.'))
+      next(createError(404, 'Path not found 🌌.'))
     })
 
     apiRouter.use((error, req, res, next) => {

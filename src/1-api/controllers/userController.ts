@@ -37,11 +37,7 @@ class UserController {
 
     @Get('/')
     async getAll(req: Request, res: Response) {
-        const pagination = {
-            startIn: 0,
-            pageSize: 100
-        }
-        this.service.getAll(pagination).then(response => {
+        this.service.getAll().then(response => {
             res.send(response);
         }).catch((error) => {
             res.send("A problem occurred while performing this action ✖")

@@ -21,7 +21,7 @@ class UserController {
                 res.send(response);
             })
         } else {
-            res.send("A problem occurred while performing this action ✖")
+            res.send("A problem occurred while performing this action ✖");
         }
     }
 
@@ -32,6 +32,7 @@ class UserController {
             res.send(response);
         }).catch((error) => {
             res.send("A problem occurred while performing this action ✖")
+            console.error(error);
         })
     }
 
@@ -40,7 +41,8 @@ class UserController {
         this.service.getAll().then(response => {
             res.send(response);
         }).catch((error) => {
-            res.send("A problem occurred while performing this action ✖")
+            res.send("A problem occurred while performing this action ✖");
+            console.error(error);
         })
     }
 
@@ -50,7 +52,8 @@ class UserController {
         this.service.getById(id).then(response => {
             res.send(response);
         }).catch((error) => {
-            res.send("A problem occurred while performing this action ✖")
+            res.send("A problem occurred while performing this action ✖");
+            console.error(error);
         })
     }
 
@@ -66,7 +69,7 @@ class UserController {
                 res.send(response);
             })
         } else {
-            res.send("A problem occurred while performing this action ✖")
+            res.send("A problem occurred while performing this action ✖");
         }
     }
 }

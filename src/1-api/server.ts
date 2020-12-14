@@ -19,7 +19,7 @@ class Server {
         //     this.express.get(/.*/, (req, res) => res.sendFile(path.resolve(__dirname, '../public/index.html')))
         // }
 
-        this.express.get('/', (req, res) => res.send('<h3>Playground 🎲 - Iteration #2</h3>'));
+        this.express.get('/', (req, res) => res.send('<h3>Playground 🎲 - Iteration #3</h3>'));
 
         this.express.listen(process.env.PORT, () => {
             console.log(`\x1b[35mServer 🏃 on port ${process.env.PORT}\x1b[0m`)

@@ -5,7 +5,7 @@ import * as compression from 'compression';
 import * as morgan from 'morgan';
 import * as createError from 'http-errors';
 import { attachControllers } from '@decorators/express';
-import { UserController } from './controllers';
+import { PersonController, TaskController, UserController } from './controllers';
 
 class Routes {
   app: any;
@@ -20,7 +20,7 @@ class Routes {
     apiRouter.use(compression())
     apiRouter.use(morgan('dev'))
 
-    attachControllers(apiRouter, [UserController])
+    attachControllers(apiRouter, [UserController, PersonController, TaskController])
     
     apiRouter.use((req, res, next) => {
       next(createError(404, 'Path not found 🌌.'))

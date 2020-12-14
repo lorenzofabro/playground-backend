@@ -1,5 +1,6 @@
-import UserService from "./userService"
+import UserService from "./userService";
+import PersonService from "./personService";
 
 export {
-  UserService
+  UserService, PersonService
 }

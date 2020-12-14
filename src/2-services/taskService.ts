@@ -1,20 +1,20 @@
+import { TaskModel } from '../1-api/models/task'
+import TaskRepository from '../3-data/repositories/taskRepository'
 import BaseService from './baseService'
-import { UserRepository } from '../3-data/repositories'
-import { UserModel } from "../1-api/models/user"
 // import { ResultModel } from '../1-api/models/errorLog'
 
-class UserService extends BaseService {
-    private repository: UserRepository
+class TaskService extends BaseService {
+    private repository: TaskRepository
 
     constructor() {
-        const repository = new UserRepository()
+        const repository = new TaskRepository()
         super(repository)
         this.repository = repository
     }
 
-    async getByIdWithPerson(id: string) {
+    async getByPersonId(filters) {
         try {
-            let response = await this.repository.getByIdWithPerson(id)
+            let response = await this.repository.getByPersonId(filters)
             return response
         } catch (error) {
             return false
@@ -23,19 +23,7 @@ class UserService extends BaseService {
         }
     }
 
-    async getAllWithPersons(pagination?) {
-        try {
-            let response = await this.repository.getAllWithPersons(pagination)
-            return response
-        } catch (error) {
-            return false
-            //   let response = new ResultModel(500, 'Ocurrió un error al realizar esta acción.', '', error, 'centerService-getByFilters')
-            //   return response
-        }
-    }
-
-
-    async validateMandatoryFields(userModel: UserModel) {
+    async validateMandatoryFields(taskModel: TaskModel) {
         // if (userModel.firstName && userModel.lastName) {
         //     console.log("First name and last name are here 🎉");
         //     return true;
@@ -53,4 +41,4 @@ class UserService extends BaseService {
 
 }
 
-export default UserService
+export default TaskService

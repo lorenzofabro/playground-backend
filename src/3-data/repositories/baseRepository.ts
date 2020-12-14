@@ -6,7 +6,7 @@ import { getManager } from 'typeorm'
 // import { ResultModel } from '../../1-api/models/errorLog'
 
 class BaseRepository {
-  private entity: any
+  entity: any
   manager: any
 
   constructor(Entity) {

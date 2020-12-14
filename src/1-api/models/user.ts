@@ -1,14 +1,18 @@
+import { PersonModel } from "./person";
+
 export class UserModel {
 
     id: string;
-    firstName: string;
-    lastName: string;
-    age: number;
+    username: string;
+    email: number;
+    person: PersonModel;
 
     constructor(user: any) {
         this.id = user.id || null,
-        this.firstName = user.firstName || null,
-        this.lastName = user.lastName || null,
-        this.age = user.age || null
+        this.username = user.username || null,
+        this.email = user.email || null,
+        this.person = user.person || null
     }
+
+
 }

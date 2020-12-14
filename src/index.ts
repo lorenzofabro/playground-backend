@@ -4,6 +4,8 @@ import Server from "./1-api/server";
 require('dotenv').config();
 
 createConnection().then(async connection => {
-    const server = new Server();
-    server.start();
+    connection.driver.afterConnect().then(() => {
+        const server = new Server();
+        server.start();
+    });
 }).catch(error => console.log(error));

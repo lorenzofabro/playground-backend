@@ -32,5 +32,6 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
         script: |
           cd /var/www/playground
+          npm install
           npm run build
           pm2 restart 2

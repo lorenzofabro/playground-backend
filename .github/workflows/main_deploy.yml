@@ -18,10 +18,7 @@ jobs:
         KEY: ${{ secrets.SSHKEY }} 
         script: |
           cd /var/www/playground
-<<<<<<< HEAD
           git pull origin main
-=======
->>>>>>> 1323792ea9c0b33a6cf6dcb95803d7cdda6275be
           npm install
           npm run build
           pm2 restart 2
